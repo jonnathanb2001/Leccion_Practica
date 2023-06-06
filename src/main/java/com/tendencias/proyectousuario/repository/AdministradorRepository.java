@@ -5,7 +5,7 @@
  */
 package com.tendencias.proyectousuario.repository;
 
-import com.tendencias.proyectousuario.model.Persona;
+import com.tendencias.proyectousuario.model.Administradores;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -13,8 +13,9 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author jonny
  */
-public interface PersonaRepository extends JpaRepository<Persona, Integer> {
+public interface AdministradorRepository extends JpaRepository<Administradores, Integer> {
 
-    @Query(value = "Select * from persona p where p.cedula = :cedula", nativeQuery = true)
-    public Persona buscarPersona(String cedula);
+    @Query(value = "Select * from administrador a where a.nombre = :nombre", nativeQuery = true)
+    public Administradores buscarAdministrador(String nombre);
+    
 }

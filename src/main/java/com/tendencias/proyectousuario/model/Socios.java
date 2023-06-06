@@ -5,15 +5,13 @@
  */
 package com.tendencias.proyectousuario.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import java.util.List;
 import lombok.Data;
 
 /**
@@ -22,18 +20,14 @@ import lombok.Data;
  */
 @Data
 @Entity
-public class Persona {
-
+public class Socios {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_persona")
-    private int id_persona;
+    @Column(name = "id_socio")
+    private int id_socio;
 
     //@Size(min = 3, max = 10, message = "El usuario debe tener entre 3 y 10 caracteres")
-    @NotBlank(message = "La cedula no puede estar en blanco")
-    @Column(name = "cedula")
-    private String cedula;
-
     @NotBlank(message = "El nombre no puede estar en blanco")
     @Column(name = "nombre")
     private String nombre;
@@ -42,28 +36,25 @@ public class Persona {
     @Column(name = "apellido")
     private String apellido;
 
-    @NotBlank(message = "El correo no puede estar en blanco")
-    @Column(name = "correo")
-    private String telefono;
+    @NotBlank(message = "La cedula no puede estar en blanco")
+    @Column(name = "cedula")
+    private String cedula;
 
     @NotBlank(message = "La direccion no puede estar en blanco")
     @Column(name = "direccion")
     private String direccion;
 
-    @NotBlank(message = "Fecha de Nacimiento no puede estar en blanco")
-    @Column(name = "fechanacimiento")
-    private String fechanacimiento;
+    @NotBlank(message = "El telefono no puede estar en blanco")
+    @Column(name = "telefono")
+    private String telefono;
 
-    @NotBlank(message = "La instruccion no puede estar en blanco")
-    @Column(name = "instruccion")
-    private String instruccion;
+    @Email(message = "Debe ingresar una dirección de correo válida")
+    @NotBlank(message = "El email no puede estar en blanco")
+    @Column(name = "email")
+    private String email;
 
-    @NotBlank(message = "El celular no puede estar en blanco")
-    @Column(name = "ceular")
-    private String celular;
-
-    @JsonIgnore //si no sale los datos en swagger es por la falta de este json
-    @OneToMany(mappedBy = "persona")
-    private List<Usuario> listaUsuarios;
-
+    @NotBlank(message = "La clave no puede estar en blanco")
+    @Column(name = "clave")
+    private String clave;
+    
 }

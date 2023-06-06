@@ -5,9 +5,8 @@
  */
 package com.tendencias.proyectousuario.service;
 
-import com.tendencias.proyectousuario.model.Persona;
-import com.tendencias.proyectousuario.repository.PersonaRepository;
-import com.tendencias.proyectousuario.repository.UsuarioRepository;
+import com.tendencias.proyectousuario.model.Administradores;
+import com.tendencias.proyectousuario.repository.AdministradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -17,13 +16,14 @@ import org.springframework.stereotype.Service;
  * @author jonny
  */
 @Service
-public class PersonaServiceImpl extends GenericServiceImpl<Persona, Integer> implements GenericService<Persona, Integer> {
+public class AdministradorServiceImpl extends GenericServiceImpl<Administradores, Integer> implements GenericService<Administradores, Integer> {
 
     @Autowired
-    PersonaRepository personaRepository;
+    AdministradorRepository administradorRepository;
 
     @Override
-    public CrudRepository<Persona, Integer> getDao() {
-        return personaRepository;
+    public CrudRepository<Administradores, Integer> getDao() {
+        return administradorRepository;
     }
+    
 }

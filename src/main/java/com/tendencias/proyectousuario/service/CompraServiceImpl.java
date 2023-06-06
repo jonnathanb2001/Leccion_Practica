@@ -5,8 +5,9 @@
  */
 package com.tendencias.proyectousuario.service;
 
-import com.tendencias.proyectousuario.model.Usuario;
-import com.tendencias.proyectousuario.repository.UsuarioRepository;
+
+import com.tendencias.proyectousuario.model.Compra;
+import com.tendencias.proyectousuario.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,14 @@ import org.springframework.stereotype.Service;
  * @author jonny
  */
 @Service
-public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> implements GenericService<Usuario, Integer> {
+public class CompraServiceImpl extends GenericServiceImpl<Compra, Integer> implements GenericService<Compra, Integer> {
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    CompraRepository compraRepository;
 
     @Override
-    public CrudRepository<Usuario, Integer> getDao() {
-        return usuarioRepository;
+    public CrudRepository<Compra, Integer> getDao() {
+        return compraRepository;
     }
-
+    
 }

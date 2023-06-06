@@ -5,7 +5,7 @@
  */
 package com.tendencias.proyectousuario.repository;
 
-import com.tendencias.proyectousuario.model.Rol;
+import com.tendencias.proyectousuario.model.Ventas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -13,9 +13,9 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author jonny
  */
-public interface RolRepository extends JpaRepository<Rol, Integer> {
+public interface VentaRepository extends JpaRepository<Ventas, Integer> {
 
-    @Query(value = "Select * from rol r where r.nombre = :nombre", nativeQuery = true)
-    public Rol buscarRol(String nombre);
-
+    @Query(value = "Select * from venta v where v.id_venta = :id_venta", nativeQuery = true)
+    public Ventas buscarVenta(int id_venta);
+    
 }

@@ -5,7 +5,6 @@
  */
 package com.tendencias.proyectousuario.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,9 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
-import java.util.List;
 import lombok.Data;
 
 /**
@@ -24,28 +21,36 @@ import lombok.Data;
  */
 @Data
 @Entity
-public class Rol {
+public class Ventas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_rol")
-    private int id_usuario;
+    @Column(name = "id_venta")
+    private int id_venta;
+
+    @NotBlank(message = "El nombre no puede estar en blanco")
+    @Column(name = "id_cliente")
+    private int id_cliente;
 
     //@Size(min = 3, max = 10, message = "El usuario debe tener entre 3 y 10 caracteres")
-    @NotBlank(message = "El nombre no puede estar en blanco")
-    @Column(name = "nombre")
-    private String tipo;
-
     @NotBlank(message = "La descripcion no puede estar en blanco")
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "id_producto")
+    private int id_producto;
 
-    @NotBlank(message = "El estado usuario no puede estar en blanco")
-    @Column(name = "estado")
-    private String estado;
-    
-    @JsonIgnore //si no sale los datos en swagger es por la falta de este json
-    @OneToMany(mappedBy = "rol")
-    private List<Usuario> listaUsuarios;
+    @NotBlank(message = "La categoria no puede estar en blanco")
+    @Column(name = "cantidad")
+    private double cantidad;
+
+    @NotBlank(message = "Precio emprendedor no puede estar en blanco")
+    @Column(name = "precio")
+    private double precio;
+
+    @NotBlank(message = "La imagen no puede estar en blanco")
+    @Column(name = "fecha")
+    private String fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
+    private Clientes cliente;
 
 }

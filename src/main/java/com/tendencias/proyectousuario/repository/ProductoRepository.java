@@ -5,7 +5,7 @@
  */
 package com.tendencias.proyectousuario.repository;
 
-import com.tendencias.proyectousuario.model.Usuario;
+import com.tendencias.proyectousuario.model.Productos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -13,9 +13,9 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author jonny
  */
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+public interface ProductoRepository extends JpaRepository<Productos, Integer> {
 
-    @Query(value = "Select * from usuario u where u.nombre = :nombre", nativeQuery = true)
-    public Usuario buscarUsuario(String nombre);
-
+    @Query(value = "Select * from producto p where p.nombre = :nombre", nativeQuery = true)
+    public Productos buscarProducto(String nombre);
+    
 }

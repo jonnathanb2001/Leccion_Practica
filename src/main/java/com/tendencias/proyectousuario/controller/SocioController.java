@@ -5,8 +5,8 @@
  */
 package com.tendencias.proyectousuario.controller;
 
-import com.tendencias.proyectousuario.model.Rol;
-import com.tendencias.proyectousuario.service.RolServiceImpl;
+import com.tendencias.proyectousuario.service.SocioServiceImpl;
+import com.tendencias.proyectousuario.model.Socios;
 import io.swagger.v3.oas.annotations.Operation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,44 +25,49 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jonny
  */
 @RestController
-@RequestMapping("/rol")
-public class RolController {
+@RequestMapping("/socio")
+public class SocioController {
 
     @Autowired
-    RolServiceImpl rolService;
+    SocioServiceImpl socioService;
 
-    @Operation(summary = "Se obtiene la lista de Roles")
+    @Operation(summary = "Se obtiene la lista de Socios")
     @GetMapping("/listar")
-    public ResponseEntity<List<Rol>> listaRoles() {
-        return new ResponseEntity<>(rolService.findByAll(), HttpStatus.OK);
+    public ResponseEntity<List<Socios>> listaSocios() {
+        return new ResponseEntity<>(socioService.findByAll(), HttpStatus.OK);
     }
 
-    @Operation(summary = "Debe enviar los campos del Rol")
+    @Operation(summary = "Debe enviar los campos de la Socios")
     @PostMapping("/crear")
-    public ResponseEntity<Rol> crearRol(@RequestBody Rol r) {
-        return new ResponseEntity<>(rolService.save(r), HttpStatus.CREATED);
+    public ResponseEntity<Socios> crearSocios(@RequestBody Socios p) {
+        return new ResponseEntity<>(socioService.save(p), HttpStatus.CREATED);
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Rol> actualizarRol(@PathVariable Integer id, @RequestBody Rol r) {
-        Rol rol = rolService.findById(id);
-        if (rol != null) {
+    public ResponseEntity<Socios> actualizarSocios(@PathVariable Integer id, @RequestBody Socios p) {
+        Socios so = socioService.findById(id);
+        if (so != null) {
             try {
-                rol.setTipo(r.getTipo());
-                rol.setDescripcion(r.getDescripcion());
-                rol.setEstado(r.getEstado());
-                return new ResponseEntity<>(rolService.save(rol), HttpStatus.CREATED);
+
+                so.setNombre(p.getNombre());
+                so.setApellido(p.getApellido());
+                so.setCedula(p.getCedula());
+                so.setDireccion(p.getDireccion());
+                so.setTelefono(p.getTelefono());
+                so.setEmail(p.getEmail());
+                so.setClave(p.getClave());
+
+                return new ResponseEntity<>(socioService.save(so), HttpStatus.CREATED);
             } catch (Exception e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
-
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    public ResponseEntity<Rol> eliminarRol(@PathVariable Integer id) {
-        rolService.delete(id);
+    public ResponseEntity<Socios> eliminarSocios(@PathVariable Integer id) {
+        socioService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
