@@ -49,8 +49,4 @@ public class Ventas {
     @Column(name = "fecha")
     private String fecha;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
-    private Clientes cliente;
-
 }

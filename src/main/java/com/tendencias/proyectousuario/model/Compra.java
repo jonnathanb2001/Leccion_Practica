@@ -36,8 +36,5 @@ public class Compra {
     @Column(name = "pvp_producto")
     private String pvp_producto;
     
-    @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
-    private Clientes cliente; //esta persona debe estar igual que en la clase usuario
 
 }

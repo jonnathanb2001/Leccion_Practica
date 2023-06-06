@@ -60,7 +60,8 @@ public class Proveedores {
     @Column(name = "clave")
     private String clave;
     
-    @JsonIgnore //si no sale los datos en swagger es por la falta de este json
-    @OneToMany(mappedBy = "producto")
-    private List<Productos> listaProductos;
+    //@JsonIgnore //si no sale los datos en swagger es por la falta de este json
+    //@OneToMany(mappedBy = "producto")
+    //private List<Productos> listaProductos;
+    
 }

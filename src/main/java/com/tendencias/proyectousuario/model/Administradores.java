@@ -5,13 +5,16 @@
  */
 package com.tendencias.proyectousuario.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -56,6 +59,7 @@ public class Administradores {
     @NotBlank(message = "La clave no puede estar en blanco")
     @Column(name = "clave")
     private String clave;
+    
     
     
 }

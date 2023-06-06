@@ -58,10 +58,5 @@ public class Clientes {
     @NotBlank(message = "La clave no puede estar en blanco")
     @Column(name = "clave")
     private String clave;
-    
-    @JsonIgnore //un cliente causa muchas ventas
-    @OneToMany(mappedBy = "venta")
-    private List<Ventas> listaVentas;
-    
-    
+   
 }

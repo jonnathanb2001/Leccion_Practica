@@ -62,8 +62,9 @@ public class Productos {
     @Column(name = "color")
     private String color;
 
-    @ManyToOne
-    @JoinColumn(name = "id_proveedor", referencedColumnName = "id_proveedor")
-    private Proveedores proveedor; //esta persona debe estar igual que en la clase usuario
+    //@ManyToOne
+    //@JoinColumn(name = "id_proveedor", referencedColumnName = "id_proveedor")
+    //private Proveedores proveedor; //esta persona debe estar igual que en la clase usuario
+    
 
 }
